@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .ship {
+                position: absolute;
+                background-color: brown;
+                margin: 0px;
+                padding: 0px;
+                width: 90px;
+                height: 30px;
+                display: block;
+                cursor: pointer;
+            }
+
+            .rotated {
+                width: 90px;
+                height: 30px;
+            }
+
+            .greenship {
+                background-color: green;
+                width: 90px;
+                height: 90px;
+            }
+
+            .dragging {
+                position: absolute;
+                margin: 0px;
+            }
+
+            .cell {
+                width: 30px;
+                height: 30px;
+                margin: 0px;
+                padding: 0px;
+                display: table-cell;
+            }
+
+            .green {
+                background-color: green;
+            }
+
+            td {
+                text-align: center;
+                width: 30px;
+                height: 30px;
+                margin: 0px;
+                padding: 0px;
+                display: table-cell;
+                border: 1px solid black;
+            }
+
+            table {
+                margin: 0px;
+                padding: 0px;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            var cell_reg = /^[a-zA-Z]{1}[1-9]{1}[0]{0,1}$/; // Validates Cell Class
+
+            let ship;
+
+            function GetElemCoord(coord) {
+                let letterCord = String.fromCharCode(String("A").charCodeAt(0) + coord.y);
+                return letterCord + coord.x;
+            }
+
+            function GetCoord(elemcoord) {
+                let BaseAlphaCode = String("A").charCodeAt(0);
+                let ycord = elemcoord.charCodeAt(0) - BaseAlphaCode;
+                let xcord = parseInt(elemcoord.substr(1, 2));
+                return { y: ycord, x: xcord };
+            }
+
+            function GetRelativePosition(elem, elem2) {
+                let elemrect = elem.getBoundingClientRect();
+                let elem2rect = elem2.getBoundingClientRect();
+                return { l: elem2rect - elemrect, t: elem2 - elemrect };
+            }
+
+            function dragElement(elmnt,ship) {
+                var pos1 = 0,
+                    pos2 = 0,
+                    pos3 = 0,
+                    pos4 = 0;
+                var offsetcoord = { y: 0, x: 0 };
+                elmnt.onmousedown = dragMouseDown;
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    elmnt.classList.add("dragging");
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+
+                    var rect = e.target.getBoundingClientRect();
+                    var elerect = elmnt.getBoundingClientRect();
+
+                    var xcell = Math.floor(Math.min(Math.max(e.clientX - rect.left, 0), elerect.width) / elerect.height); //x position within the element.
+                    var ycell = Math.floor(Math.min(Math.max(e.clientY - rect.top, 0), elerect.height) / elerect.width); //y position within the element.
+
+                    offsetcoord.x = xcell;
+                    offsetcoord.y = ycell;
+
+                    document.getElementById("output").innerHTML = xcell + " : " + ycell;
+
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+                    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+                }
+
+                function getCellElem(e, offset) {
+                    let cell;
+                    var elemarray = document.elementsFromPoint(e.clientX, e.clientY);
+                    for (let i = 0; i < elemarray.length; i++) {
+                        if (elemarray[i].classList.contains("cell")) {
+                            iscell = elemarray[i].id.match(cell_reg) != null;
+                            if (iscell) {
+                                if (offset.x == 0 && offset.y == 0) {
+                                    cell = elemarray[i];
+                                } else {
+                                    let tempcord = GetCoord(elemarray[i].id);
+                                    tempcord.x -= offsetcoord.x;
+                                    tempcord.y -= offsetcoord.y;
+                                    cell = document.getElementById(GetElemCoord(tempcord));
+                                }
+                            }
+                        }
+                    }
+                    return cell;
+                }
+
+                function closeDragElement(e) {
+                    //Clear Top and Left
+                    elmnt.style.top = "";
+                    elmnt.style.left = "";
+
+                    let cellelem = getCellElem(e, offsetcoord);
+                    if (!cellelem) {
+                        document.getElementById("pallete").appendChild(elmnt);
+                    } else {
+                        cellelem.appendChild(elmnt);
+                        var elerect = elmnt.getBoundingClientRect();
+                        var cellrect = cellelem.getBoundingClientRect();
+                        elmnt.style.top = elerect.y - (elerect.height / 2) + "px";
+                    }
+
+                    elmnt.classList.remove("dragging");
+
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+
+            function clickEvent(e) {
+                console.log("a");
+                // e = Mouse click event.
+                var rect = e.target.getBoundingClientRect();
+                var x = e.clientX - rect.left; //x position within the element.
+                var y = e.clientY - rect.top; //y position within the element.
+                var yshipcell = Math.floor(clamp(y, 0, 90) / 30);
+                var xshipcell = Math.floor(clamp(x, 0, 90) / 30);
+                ", Ship X Cell : " + xshipcell + ", Ship Y Cell : " + yshipcell;
+            }
+
+            window.onload = function () {
+                ship = document.getElementsByClassName("ship")[0];
+                //ship.addEventListener("click", clickEvent);
+                dragElement(ship);
+            };
+        </script>
+    </head>
+    <body>
+        <h2>Drag and Drop</h2>
+        <p id="output"></p>
+        <div id="pallete"><div class="ship rotated"></div></div>
+        <p>test.</p>
+
+        <p>Pick A Ship</p>
+        <br />
+
+        <br />
+        <h2>place a ship</h2>
+
+        <table cellspacing="0">
+            <tr>
+                <td></td>
+                <td><strong>1</strong></td>
+                <td><strong>2</strong></td>
+                <td><strong>3</strong></td>
+                <td><strong>4</strong></td>
+                <td><strong>5</strong></td>
+                <td><strong>6</strong></td>
+                <td><strong>7</strong></td>
+                <td><strong>8</strong></td>
+                <td><strong>9</strong></td>
+                <td><strong>10</strong></td>
+            </tr>
+            <tr>
+                <td><strong>A</strong></td>
+                <td id="A1" class="cell"></td>
+                <td id="A2" class="cell"></td>
+                <td id="A3" class="cell"></td>
+                <td id="A4" class="cell"></td>
+                <td id="A5" class="cell"></td>
+                <td id="A6" class="cell"></td>
+                <td id="A7" class="cell"></td>
+                <td id="A8" class="cell"></td>
+                <td id="A9" class="cell"></td>
+                <td id="A10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>B</strong></td>
+                <td id="B1" class="cell"></td>
+                <td id="B2" class="cell"></td>
+                <td id="B3" class="cell"></td>
+                <td id="B4" class="cell"></td>
+                <td id="B5" class="cell"></td>
+                <td id="B6" class="cell"></td>
+                <td id="B7" class="cell"></td>
+                <td id="B8" class="cell"></td>
+                <td id="B9" class="cell"></td>
+                <td id="B10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>C</strong></td>
+                <td id="C1" class="cell"></td>
+                <td id="C2" class="cell"></td>
+                <td id="C3" class="cell"></td>
+                <td id="C4" class="cell"></td>
+                <td id="C5" class="cell"></td>
+                <td id="C6" class="cell"></td>
+                <td id="C7" class="cell"></td>
+                <td id="C8" class="cell"></td>
+                <td id="C9" class="cell"></td>
+                <td id="C10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>D</strong></td>
+                <td id="D1" class="cell"></td>
+                <td id="D2" class="cell"></td>
+                <td id="D3" class="cell"></td>
+                <td id="D4" class="cell"></td>
+                <td id="D5" class="cell"></td>
+                <td id="D6" class="cell"></td>
+                <td id="D7" class="cell"></td>
+                <td id="D8" class="cell"></td>
+                <td id="D9" class="cell"></td>
+                <td id="D10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>E</strong></td>
+                <td id="E1" class="cell"></td>
+                <td id="E2" class="cell"></td>
+                <td id="E3" class="cell"></td>
+                <td id="E4" class="cell"></td>
+                <td id="E5" class="cell"></td>
+                <td id="E6" class="cell"></td>
+                <td id="E7" class="cell"></td>
+                <td id="E8" class="cell"></td>
+                <td id="E9" class="cell"></td>
+                <td id="E10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>F</strong></td>
+                <td id="F1" class="cell"></td>
+                <td id="F2" class="cell"></td>
+                <td id="F3" class="cell"></td>
+                <td id="F4" class="cell"></td>
+                <td id="F5" class="cell"></td>
+                <td id="F6" class="cell"></td>
+                <td id="F7" class="cell"></td>
+                <td id="F8" class="cell"></td>
+                <td id="F9" class="cell"></td>
+                <td id="F10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>G</strong></td>
+                <td id="G1" class="cell"></td>
+                <td id="G2" class="cell"></td>
+                <td id="G3" class="cell"></td>
+                <td id="G4" class="cell"></td>
+                <td id="G5" class="cell"></td>
+                <td id="G6" class="cell"></td>
+                <td id="G7" class="cell"></td>
+                <td id="G8" class="cell"></td>
+                <td id="G9" class="cell"></td>
+                <td id="G10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>H</strong></td>
+                <td id="H1" class="cell"></td>
+                <td id="H2" class="cell"></td>
+                <td id="H3" class="cell"></td>
+                <td id="H4" class="cell"></td>
+                <td id="H5" class="cell"></td>
+                <td id="H6" class="cell"></td>
+                <td id="H7" class="cell"></td>
+                <td id="H8" class="cell"></td>
+                <td id="H9" class="cell"></td>
+                <td id="H10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>I</strong></td>
+                <td id="I1" class="cell"></td>
+                <td id="I2" class="cell"></td>
+                <td id="I3" class="cell"></td>
+                <td id="I4" class="cell"></td>
+                <td id="I5" class="cell"></td>
+                <td id="I6" class="cell"></td>
+                <td id="I7" class="cell"></td>
+                <td id="I8" class="cell"></td>
+                <td id="I9" class="cell"></td>
+                <td id="I10" class="cell"></td>
+            </tr>
+            <tr>
+                <td><strong>J</strong></td>
+                <td id="J1" class="cell"></td>
+                <td id="J2" class="cell"></td>
+                <td id="J3" class="cell"></td>
+                <td id="J4" class="cell"></td>
+                <td id="J5" class="cell"></td>
+                <td id="J6" class="cell"></td>
+                <td id="J7" class="cell"></td>
+                <td id="J8" class="cell"></td>
+                <td id="J9" class="cell"></td>
+                <td id="J10" class="cell"></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Battleship Singleplayer</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../pagestyle.css">
+    <style>
+        .consolestyle {
+        background: #262626;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        }
+        
+        .consolestyle input {
+            outline: none;
+            border: none;
+            border-left: 5px solid #595959;
+            background: #404040;
+            color: white;
+            text-decoration: none;
+            display: inline;
+            width:100%;
+            animation: flash 3s linear infinite;
+        }
+
+        @keyframes flash {
+            50% {
+                border-left: 5px solid #808080;
+            }
+        }
+        
+        .consolestyle p {
+            border: none;
+            text-decoration: none;
+            display: inline;
+        }
+    </style>
+    <script type="text/javascript" src="../js/lib/simpleiostream.js"></script>
+    <script type="text/javascript" src="../js/lib/requestPHP.js"></script>
+    
+    <script type="text/javascript" src="../js/Cell.js"></script>
+    <script type="text/javascript" src="../js/Grid.js"></script>
+    <script type="text/javascript" src="../js/PlayerData.js"></script>
+    <script type="text/javascript" src="../js/Model.js"></script>
+    <script type="text/javascript" src="../js/Input.js"></script>
+    <script type="text/javascript" src="../js/View.js"></script>
+    <script type="text/javascript" src="../js/Controller.js"></script>
+</head>
+<body class="consolestyle">
+    <div>
+        <p id="console_output"></p>
+        <input type="text" id="console_userinput"/>
+    </div>
+    
+    <script type="text/javascript">
+    document.getElementById('console_userinput').focus();
+    setOutputElement('console_output');
+    let play = new Controller();
+    play.mainMenu();
+    </script>
+</body>
+</html>
+

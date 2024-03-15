@@ -1,0 +1,181 @@
+.playerboard {
+    background-color: #4db8ad;
+    display: inline-block;
+    font-size: 30px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    color: white;
+    min-width: 723px;
+    min-height: 723px;
+}
+
+.playerboard.enemy {
+    background-color: tomato;
+}
+
+.playerboard td {
+    width: 61px;
+    height: 61px;
+    margin: 0px;
+    padding: 0px;
+    display: table-cell;
+}
+
+.ship {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    pointer-events: none;
+}
+
+.destroyer {
+    background-image: url("content/Destroyer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 120px;
+    transform: translateY(-30px);
+}
+
+.destroyer.rotated {
+    transform: translateY(-60px) translateX(30px) rotate(90deg);
+}
+
+#setupwindow .slot .destroyer {
+    transform: translateY(0px);
+}
+
+#setupwindow .slot .destroyer.rotated {
+    transform: translateY(-30px) translateX(30px) rotate(90deg);
+}
+
+.submarine {
+    background-image: url("content/Submarine.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 180px;
+    transform: translateY(-30px);
+}
+
+.submarine.rotated {
+    transform: translateY(-90px) translateX(60px) rotate(90deg);
+}
+
+#setupwindow .slot .submarine {
+    transform: translateY(0px);
+}
+
+.submarine.rotated {
+    transform: translateY(-90px) translateX(60px) rotate(90deg);
+}
+
+#setupwindow .slot .submarine.rotated {
+    transform: translateY(-60px) translateX(60px) rotate(90deg);
+}
+
+.cruiser {
+    background-image: url("content/Cruiser.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 180px;
+    transform: translateY(-30px);
+}
+
+.cruiser.rotated {
+    transform: translateY(-90px) translateX(60px) rotate(90deg);
+}
+
+#setupwindow .slot .cruiser {
+    transform: translateY(0px);
+}
+
+#setupwindow .slot .cruiser.rotated {
+    transform: translateY(-60px) translateX(60px) rotate(90deg);
+}
+
+.battleship {
+    background-image: url("content/Battleship.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 240px;
+    transform: translateY(-30px);
+}
+
+.battleship.rotated {
+    transform: translateY(-120px) translateX(90px) rotate(90deg);
+}
+
+#setupwindow .slot .battleship {
+    transform: translateY(0px);
+}
+
+#setupwindow .slot .battleship.rotated {
+    transform: translateY(-90px) translateX(90px) rotate(90deg);
+}
+
+.carrier {
+    background-image: url("content/Carrier.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 300px;
+    transform: translateY(-25px);
+}
+
+.carrier.rotated {
+    transform: translateY(-150px) translateX(125px) rotate(90deg);
+}
+
+#setupwindow .slot .carrier {
+    transform: translateY(0px);
+}
+
+#setupwindow .slot .carrier.rotated {
+    transform: translateY(-120px) translateX(125px) rotate(90deg);
+}
+
+#setupwindow {
+    border: 1px solid black;
+    background-color: cadetblue;
+    width: 400px;
+    min-height: 320px;
+    display: inline-block;
+}
+
+#setupwindow .slot {
+    width: 61px;
+    height: 61px;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    display: inline-block;
+}
+
+#setupwindow.rotated .slot {
+    display: block;
+}
+
+.draggable {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.cell {
+    width: 61px;
+    height: 61px;
+    margin: 0px;
+    padding: 0px;
+    display: table-cell;
+    border: 1px solid white;
+}
+
+table {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    border: 1px solid black;
+}

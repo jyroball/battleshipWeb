@@ -1,0 +1,50 @@
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center-content {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-content button {
+    display: block;
+}
+
+.center-content a {
+    display: block;
+    width: 50%;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #51B955;
+  
+}
+
+.button:active {
+  background-color: #3e8e41;
+}

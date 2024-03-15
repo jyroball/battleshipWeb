@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <title>Battleship - Game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link a href="stylesheet.css" rel="stylesheet" type="text/css" media="all" />
+        <link a href="game_stylesheet.css" rel="stylesheet" type="text/css" media="all"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game</title>
+        <!--<script src="js/battleship.js"></script>-->
+    </head>
+    <body id="main">
+        <div class="nav-bar" id="nav-bar">
+            <a class="home float-left" href="index.html"></a>
+            <button class="button float-right" id="logoutn" onclick="logout()">Logout</button>
+            <p class="fullnametag baritem float-right" style="color: white">...</p>
+        </div>
+        <div class="nav-spacer"></div>
+
+        <div class="big-menu-box" id="gamecontent">
+            <h1>TARGET BOARD</h1>
+            <div class="playerboard enemy">
+                <table cellspacing="0">
+                    <tr>
+                        <td></td>
+                        <td><strong>1</strong></td>
+                        <td><strong>2</strong></td>
+                        <td><strong>3</strong></td>
+                        <td><strong>4</strong></td>
+                        <td><strong>5</strong></td>
+                        <td><strong>6</strong></td>
+                        <td><strong>7</strong></td>
+                        <td><strong>8</strong></td>
+                        <td><strong>9</strong></td>
+                        <td><strong>10</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>A</strong></td>
+                        <td id="P1A1" class="cell"><div class="ship submarine rotated"></div></td>
+                        <td id="P1A2" class="cell"></td>
+                        <td id="P1A3" class="cell"></td>
+                        <td id="P1A4" class="cell"></td>
+                        <td id="P1A5" class="cell"></td>
+                        <td id="P1A6" class="cell"></td>
+                        <td id="P1A7" class="cell"></td>
+                        <td id="P1A8" class="cell"></td>
+                        <td id="P1A9" class="cell"></td>
+                        <td id="P1A10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong></td>
+                        <td id="P1B1" class="cell"></td>
+                        <td id="P1B2" class="cell"></td>
+                        <td id="P1B3" class="cell"></td>
+                        <td id="P1B4" class="cell"></td>
+                        <td id="P1B5" class="cell"></td>
+                        <td id="P1B6" class="cell"></td>
+                        <td id="P1B7" class="cell"></td>
+                        <td id="P1B8" class="cell"></td>
+                        <td id="P1B9" class="cell"></td>
+                        <td id="P1B10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>C</strong></td>
+                        <td id="P1C1" class="cell"></td>
+                        <td id="P1C2" class="cell"></td>
+                        <td id="P1C3" class="cell"></td>
+                        <td id="P1C4" class="cell"></td>
+                        <td id="P1C5" class="cell"></td>
+                        <td id="P1C6" class="cell"></td>
+                        <td id="P1C7" class="cell"></td>
+                        <td id="P1C8" class="cell"></td>
+                        <td id="P1C9" class="cell"></td>
+                        <td id="P1C10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>D</strong></td>
+                        <td id="P1D1" class="cell"></td>
+                        <td id="P1D2" class="cell"></td>
+                        <td id="P1D3" class="cell"></td>
+                        <td id="P1D4" class="cell"></td>
+                        <td id="P1D5" class="cell"></td>
+                        <td id="P1D6" class="cell"></td>
+                        <td id="P1D7" class="cell"></td>
+                        <td id="P1D8" class="cell"></td>
+                        <td id="P1D9" class="cell"></td>
+                        <td id="P1D10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>E</strong></td>
+                        <td id="P1E1" class="cell"></td>
+                        <td id="P1E2" class="cell"></td>
+                        <td id="P1E3" class="cell"></td>
+                        <td id="P1E4" class="cell"></td>
+                        <td id="P1E5" class="cell"></td>
+                        <td id="P1E6" class="cell"></td>
+                        <td id="P1E7" class="cell"></td>
+                        <td id="P1E8" class="cell"></td>
+                        <td id="P1E9" class="cell"></td>
+                        <td id="P1E10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>F</strong></td>
+                        <td id="P1F1" class="cell"></td>
+                        <td id="P1F2" class="cell"></td>
+                        <td id="P1F3" class="cell"></td>
+                        <td id="P1F4" class="cell"></td>
+                        <td id="P1F5" class="cell"></td>
+                        <td id="P1F6" class="cell"></td>
+                        <td id="P1F7" class="cell"></td>
+                        <td id="P1F8" class="cell"></td>
+                        <td id="P1F9" class="cell"></td>
+                        <td id="P1F10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>G</strong></td>
+                        <td id="P1G1" class="cell"></td>
+                        <td id="P1G2" class="cell"></td>
+                        <td id="P1G3" class="cell"></td>
+                        <td id="P1G4" class="cell"></td>
+                        <td id="P1G5" class="cell"></td>
+                        <td id="P1G6" class="cell"></td>
+                        <td id="P1G7" class="cell"></td>
+                        <td id="P1G8" class="cell"></td>
+                        <td id="P1G9" class="cell"></td>
+                        <td id="P1G10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>H</strong></td>
+                        <td id="P1H1" class="cell"></td>
+                        <td id="P1H2" class="cell"></td>
+                        <td id="P1H3" class="cell"></td>
+                        <td id="P1H4" class="cell"></td>
+                        <td id="P1H5" class="cell"></td>
+                        <td id="P1H6" class="cell"></td>
+                        <td id="P1H7" class="cell"></td>
+                        <td id="P1H8" class="cell"></td>
+                        <td id="P1H9" class="cell"></td>
+                        <td id="P1H10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>I</strong></td>
+                        <td id="P1I1" class="cell"></td>
+                        <td id="P1I2" class="cell"></td>
+                        <td id="P1I3" class="cell"></td>
+                        <td id="P1I4" class="cell"></td>
+                        <td id="P1I5" class="cell"></td>
+                        <td id="P1I6" class="cell"></td>
+                        <td id="P1I7" class="cell"></td>
+                        <td id="P1I8" class="cell"></td>
+                        <td id="P1I9" class="cell"></td>
+                        <td id="P1I10" class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>J</strong></td>
+                        <td id="P1J1" class="cell"></td>
+                        <td id="P1J2" class="cell"></td>
+                        <td id="P1J3" class="cell"></td>
+                        <td id="P1J4" class="cell"></td>
+                        <td id="P1J5" class="cell"></td>
+                        <td id="P1J6" class="cell"></td>
+                        <td id="P1J7" class="cell"></td>
+                        <td id="P1J8" class="cell"></td>
+                        <td id="P1J9" class="cell"></td>
+                        <td id="P1J10" class="cell"></td>
+                    </tr>
+                </table>
+            </div>
+            <h1>YOUR BOARD</h1>
+                <div class="playerboard">
+                    <table cellspacing="0">
+                        <tr>
+                            <td></td>
+                            <td><strong>1</strong></td>
+                            <td><strong>2</strong></td>
+                            <td><strong>3</strong></td>
+                            <td><strong>4</strong></td>
+                            <td><strong>5</strong></td>
+                            <td><strong>6</strong></td>
+                            <td><strong>7</strong></td>
+                            <td><strong>8</strong></td>
+                            <td><strong>9</strong></td>
+                            <td><strong>10</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>A</strong></td>
+                            <td id="P1A1" class="cell"><div class="ship submarine rotated"></div></td>
+                            <td id="P1A2" class="cell"></td>
+                            <td id="P1A3" class="cell"></td>
+                            <td id="P1A4" class="cell"></td>
+                            <td id="P1A5" class="cell"></td>
+                            <td id="P1A6" class="cell"></td>
+                            <td id="P1A7" class="cell"></td>
+                            <td id="P1A8" class="cell"></td>
+                            <td id="P1A9" class="cell"></td>
+                            <td id="P1A10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B</strong></td>
+                            <td id="P1B1" class="cell"></td>
+                            <td id="P1B2" class="cell"></td>
+                            <td id="P1B3" class="cell"></td>
+                            <td id="P1B4" class="cell"></td>
+                            <td id="P1B5" class="cell"></td>
+                            <td id="P1B6" class="cell"></td>
+                            <td id="P1B7" class="cell"></td>
+                            <td id="P1B8" class="cell"></td>
+                            <td id="P1B9" class="cell"></td>
+                            <td id="P1B10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>C</strong></td>
+                            <td id="P1C1" class="cell"></td>
+                            <td id="P1C2" class="cell"></td>
+                            <td id="P1C3" class="cell"></td>
+                            <td id="P1C4" class="cell"></td>
+                            <td id="P1C5" class="cell"></td>
+                            <td id="P1C6" class="cell"></td>
+                            <td id="P1C7" class="cell"></td>
+                            <td id="P1C8" class="cell"></td>
+                            <td id="P1C9" class="cell"></td>
+                            <td id="P1C10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>D</strong></td>
+                            <td id="P1D1" class="cell"></td>
+                            <td id="P1D2" class="cell"></td>
+                            <td id="P1D3" class="cell"></td>
+                            <td id="P1D4" class="cell"></td>
+                            <td id="P1D5" class="cell"></td>
+                            <td id="P1D6" class="cell"></td>
+                            <td id="P1D7" class="cell"></td>
+                            <td id="P1D8" class="cell"></td>
+                            <td id="P1D9" class="cell"></td>
+                            <td id="P1D10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>E</strong></td>
+                            <td id="P1E1" class="cell"></td>
+                            <td id="P1E2" class="cell"></td>
+                            <td id="P1E3" class="cell"></td>
+                            <td id="P1E4" class="cell"></td>
+                            <td id="P1E5" class="cell"></td>
+                            <td id="P1E6" class="cell"></td>
+                            <td id="P1E7" class="cell"></td>
+                            <td id="P1E8" class="cell"></td>
+                            <td id="P1E9" class="cell"></td>
+                            <td id="P1E10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>F</strong></td>
+                            <td id="P1F1" class="cell"></td>
+                            <td id="P1F2" class="cell"></td>
+                            <td id="P1F3" class="cell"></td>
+                            <td id="P1F4" class="cell"></td>
+                            <td id="P1F5" class="cell"></td>
+                            <td id="P1F6" class="cell"></td>
+                            <td id="P1F7" class="cell"></td>
+                            <td id="P1F8" class="cell"></td>
+                            <td id="P1F9" class="cell"></td>
+                            <td id="P1F10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>G</strong></td>
+                            <td id="P1G1" class="cell"></td>
+                            <td id="P1G2" class="cell"></td>
+                            <td id="P1G3" class="cell"></td>
+                            <td id="P1G4" class="cell"></td>
+                            <td id="P1G5" class="cell"></td>
+                            <td id="P1G6" class="cell"></td>
+                            <td id="P1G7" class="cell"></td>
+                            <td id="P1G8" class="cell"></td>
+                            <td id="P1G9" class="cell"></td>
+                            <td id="P1G10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>H</strong></td>
+                            <td id="P1H1" class="cell"></td>
+                            <td id="P1H2" class="cell"></td>
+                            <td id="P1H3" class="cell"></td>
+                            <td id="P1H4" class="cell"></td>
+                            <td id="P1H5" class="cell"></td>
+                            <td id="P1H6" class="cell"></td>
+                            <td id="P1H7" class="cell"></td>
+                            <td id="P1H8" class="cell"></td>
+                            <td id="P1H9" class="cell"></td>
+                            <td id="P1H10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>I</strong></td>
+                            <td id="P1I1" class="cell"></td>
+                            <td id="P1I2" class="cell"></td>
+                            <td id="P1I3" class="cell"></td>
+                            <td id="P1I4" class="cell"></td>
+                            <td id="P1I5" class="cell"></td>
+                            <td id="P1I6" class="cell"></td>
+                            <td id="P1I7" class="cell"></td>
+                            <td id="P1I8" class="cell"></td>
+                            <td id="P1I9" class="cell"></td>
+                            <td id="P1I10" class="cell"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>J</strong></td>
+                            <td id="P1J1" class="cell"></td>
+                            <td id="P1J2" class="cell"></td>
+                            <td id="P1J3" class="cell"></td>
+                            <td id="P1J4" class="cell"></td>
+                            <td id="P1J5" class="cell"></td>
+                            <td id="P1J6" class="cell"></td>
+                            <td id="P1J7" class="cell"></td>
+                            <td id="P1J8" class="cell"></td>
+                            <td id="P1J9" class="cell"></td>
+                            <td id="P1J10" class="cell"></td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+    </body>
+    <address>This version of Battleship was developed by Group 1 within Professor Lehr's CIS-17B course.</address>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.cell {
+  width: 30px;
+  height: 30px;
+  margin: 30px;
+  padding: 30px;
+  border: 1px solid black;
+  display: block;
+}
+table, th, td {
+  width: 30px;
+  height: 30px;
+  margin: 30px;
+  padding: 30px;
+  border:1px solid black;
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>test.</p>
+
+<p>Pick A Ship</p>
+<br>
+
+<tr class="cell" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="favicon.ico" draggable="true" ondragstart="drag(event)" id="drag1" width="30" height="30">
+</tr>
+<tr class="cell" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="favicon.ico" draggable="true" ondragstart="drag(event)" id="drag1" width="30" height="30">
+</tr>
+
+<br>
+<h2>place a ship</h2>
+
+<table>
+  <tr>
+    <th> </th>
+    <th><strong>1</strong></th>
+    <th><strong>2</strong></th>
+	<th><strong>3</strong></th>
+    <th><strong>4</strong></th>
+	<th><strong>5</strong></th>
+    <th><strong>6</strong></th>
+	<th><strong>7</strong></th>
+    <th><strong>8</strong></th>
+	<th><strong>9</strong></th>
+    <th><strong>10</strong></th>
+  </tr>
+  <tr>
+    <td><strong>1</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>2</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>3</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>4</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>5</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>6</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>7</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>8</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>9</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+  <tr>
+    <td><strong>10</strong></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	<td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+    <td id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+  </tr>
+</table>
+
+</body>
+</html>

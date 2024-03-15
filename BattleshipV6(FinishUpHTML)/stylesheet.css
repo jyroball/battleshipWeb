@@ -1,0 +1,142 @@
+body {
+    background-image: url("content/bg1.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+}
+
+#main {
+    padding-top: 100px;
+}
+
+.menu-box {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    background-color: rgb(196, 196, 196, 0.75);
+    margin: auto;
+    text-align: center;
+    padding: 25px;
+    width: auto;
+    max-width: 600px;
+}
+
+.big-menu-box {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    background-color: rgb(196, 196, 196, 0.75);
+    margin: auto;
+    text-align: center;
+    padding: 25px;
+    width: auto;
+    height: max-content;
+}
+
+.menu-button {
+    background-color: #000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 500px;
+}
+
+.menu-smallbutton {
+    background-color: #000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 500px;
+}
+
+.menu-button:hover {
+    background-color: #444444;
+}
+
+.top-nav {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 50px;
+}
+
+.nav-bar {
+    background-color: rgb(196, 196, 196, 0.75);
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    padding: none;
+    margin: -10px;
+    margin-top: -100px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.nav-bar .baritem {
+    background-color: rgb(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.nav-bar .home {
+    background-image: url("content/battleship-logo.png");
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-color: rgb(255, 255, 255, 0.25);
+    border: none;
+    display: inline-block;
+    margin: 0px;
+    width: 305px;
+    height: 55px;
+}
+
+.nav-bar .home:hover {
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+.inputtest {
+    display: block;
+    margin: auto;
+    width: 200px;
+}
+
+.button {
+    background-color: rgb(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+address {
+    margin: auto;
+    text-align: center;
+}
